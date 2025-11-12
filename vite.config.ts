@@ -21,17 +21,7 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  */
 export default defineConfig(({ command, mode }): UserConfig => {
   return {
-    plugins: [
-      qwikCity({
-        staticGenerate: {
-          origin: process.env.VERCEL_URL
-            ? `https://${process.env.VERCEL_URL}`
-            : undefined,
-        },
-      }),
-      qwikVite(),
-      tsconfigPaths({ root: "." }),
-    ],
+    plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: "." })],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
       // Put problematic deps that break bundling here, mostly those with binaries.
