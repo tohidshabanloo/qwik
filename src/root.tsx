@@ -17,6 +17,8 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="Content-Language" content="fa" />
         {!isDev && (
           <link
             rel="manifest"
@@ -25,7 +27,7 @@ export default component$(() => {
         )}
         <RouterHead />
       </head>
-      <body lang="en">
+      <body lang="fa" dir="rtl">
         <RouterOutlet />
       </body>
     </QwikCityProvider>

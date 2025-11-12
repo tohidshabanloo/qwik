@@ -23,7 +23,7 @@ interface Education {
 const aboutMe = {
   title: "در مورد من",
   content:
-    "یک طراح فریلنسر فرانت اند با بیش از 11 سال تجربه هستم. کار من این است که برای افراد شگفت انگیز در سرتاسر جهان کدنویسی می کنم. من کارم را دوست دارم و علاقه مند هستم تا با افراد جدید کار کنم چون آدم های جدید تجربیات جدید هستند.",
+    "توحید شعبانلو هستم؛ یک طراح فریلنسر فول استک با بیش از 11+ سال تجربه هستم. کار من این است که برای افراد شگفت انگیز در سرتاسر جهان کدنویسی می کنم. من کارم را دوست دارم و علاقه مند هستم تا با افراد جدید کار کنم چون آدم های جدید تجربیات جدید هستند.",
 };
 
 const workExperiences: WorkExperience[] = [
@@ -33,13 +33,13 @@ const workExperiences: WorkExperience[] = [
     period: "۱۴۰2 - تاکنون",
     location: "فرودگاه امام خمینی",
     description: [
-      "ادغام دیتابیس های درون سازمانی و پیاده سازی در قالب فرانت اند (با استفاده از Nextjs و Nodejs)",
+      "ادغام دیتابیس های درون سازمانی و پیاده سازی در قالب فول استک (با استفاده از Nextjs و Nodejs)",
       "نگهداری وبسایت فرودگاه",
     ],
     projects: [
-      "تسک منیجر هوشمند",
-      "دایرکتوری کلاینت ها بر اساس شبکه",
-      "گزارش گیری روزانه در قالب Word",
+      "سامانه ثبت سرمایه گذاری - https://rahvan.ikac.ir",
+      "سامانه مدیریت تسک - داخلی فرودگاه",
+      "سامانه مدیریت انبار - داخلی فرودگاه",
     ],
   },
   {
@@ -91,7 +91,7 @@ const educations: Education[] = [
     period: "۱۴۰۰ - ۱۴۰۱",
     location: "تهران",
     description: [
-      "۱۶۰ ساعت برنامه نویسی فرانت اند با زبان جاوااسکریپت، فریمورک next.js و کتابخانه react.js، انجام پروژه های تیمی برای راه اندازی وبسایت های فروشگاهی با استفاده از tailwind، redux و کار با api.",
+      "۱۶۰ ساعت برنامه نویسی فول استک با زبان جاوااسکریپت، فریمورک next.js و کتابخانه react.js، انجام پروژه های تیمی برای راه اندازی وبسایت های فروشگاهی با استفاده از tailwind، redux و کار با api.",
     ],
     projects: ["raikart", "bebinkharid", "Kafka", "Natasun", "کهکشان نور"],
   },
@@ -116,12 +116,44 @@ const educations: Education[] = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Frontend Developer",
+  jobTitle: "طراح فریلنسر فول استک",
+  description:
+    "توحید شعبانلو هستم؛ یک طراح فریلنسر فول استک با بیش از 11+ سال تجربه در طراحی و توسعه وبسایت",
+  knowsAbout: [
+    "Frontend Development",
+    "React.js",
+    "Next.js",
+    "JavaScript",
+    "SEO",
+    "WordPress",
+    "PrestaShop",
+    "Tailwind CSS",
+    "Redux",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "IR",
+  },
+  alumniOf: educations.map((edu) => ({
+    "@type": "EducationalOrganization",
+    name: edu.institution,
+  })),
+  worksFor: workExperiences.map((exp) => ({
+    "@type": "Organization",
+    name: exp.company,
+  })),
+};
+
 export default component$(() => {
   return (
     <div class="resume-container">
-      <header class="resume-header">
-        <h1 class="resume-title">رزومه</h1>
-      </header>
+        <header class="resume-header">
+          <h1 class="resume-title">رزومه</h1>
+        </header>
 
       <section class="resume-section">
         <h2 class="section-title">{aboutMe.title}</h2>
@@ -201,24 +233,34 @@ export default component$(() => {
       </section>
 
       <footer class="resume-footer">
-        <p>&copy; {new Date().getFullYear()} - تمامی حقوق محفوظ است</p>
+        <p>
+          &copy; {new Date().getFullYear()} - تمامی حقوق محفوظ است |{" "}
+          <a
+            href="https://www.rahvan.ir"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            Build with &lt;3 by Rahvan.ir
+          </a>
+        </p>
       </footer>
     </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: "رزومه - طراح فریلنسر فرانت اند",
+  title: "رزومه توحید شعبانلو - طراح فریلنسر فول استک",
   meta: [
     {
       name: "description",
       content:
-        "رزومه یک طراح فریلنسر فرانت اند با بیش از 11 سال تجربه در طراحی و توسعه وبسایت، سئو و برنامه نویسی با React.js و Next.js",
+        "رزومه توحید شعبانلو هستم؛ یک طراح فریلنسر فول استک با بیش از 11+ سال تجربه در طراحی و توسعه وبسایت، سئو و برنامه نویسی با React.js و Next.js",
     },
     {
       name: "keywords",
       content:
-        "رزومه، طراح فرانت اند، فریلنسر، React.js، Next.js، سئو، طراحی وبسایت، برنامه نویسی",
+        "رزومه، طراح فول استک، فریلنسر، React.js، Next.js، سئو، طراحی وبسایت، برنامه نویسی، وردپرس، پرستاشاپ، Tailwind CSS، Redux",
     },
     {
       name: "author",
@@ -226,12 +268,12 @@ export const head: DocumentHead = {
     },
     {
       property: "og:title",
-      content: "رزومه - طراح فریلنسر فرانت اند",
+      content: "رزومه توحید شعبانلو - طراح فریلنسر فول استک",
     },
     {
       property: "og:description",
       content:
-        "رزومه یک طراح فریلنسر فرانت اند با بیش از 11 سال تجربه در طراحی و توسعه وبسایت",
+        "رزومه توحید شعبانلو هستم؛ یک طراح فریلنسر فول استک با بیش از 11+ سال تجربه در طراحی و توسعه وبسایت",
     },
     {
       property: "og:type",
@@ -242,17 +284,21 @@ export const head: DocumentHead = {
       content: "fa_IR",
     },
     {
+      property: "og:locale:alternate",
+      content: "en_US",
+    },
+    {
       name: "twitter:card",
-      content: "summary",
+      content: "summary_large_image",
     },
     {
       name: "twitter:title",
-      content: "رزومه - طراح فریلنسر فرانت اند",
+      content: "رزومه توحید شعبانلو - طراح فریلنسر فول استک",
     },
     {
       name: "twitter:description",
       content:
-        "رزومه یک طراح فریلنسر فرانت اند با بیش از 11 سال تجربه در طراحی و توسعه وبسایت",
+        "رزومه توحید شعبانلو هستم؛ یک طراح فریلنسر فول استک با بیش از 11+ سال تجربه در طراحی و توسعه وبسایت",
     },
     {
       name: "language",
@@ -262,11 +308,37 @@ export const head: DocumentHead = {
       name: "geo.region",
       content: "IR",
     },
+    {
+      name: "robots",
+      content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    },
+    {
+      name: "googlebot",
+      content: "index, follow",
+    },
   ],
   links: [
     {
       rel: "canonical",
       href: "https://yourdomain.com/",
+    },
+    {
+      rel: "alternate",
+      hreflang: "fa",
+      href: "https://yourdomain.com/",
+    },
+    {
+      rel: "sitemap",
+      type: "application/xml",
+      href: "/sitemap.xml",
+    },
+  ],
+  scripts: [
+    {
+      props: {
+        type: "application/ld+json",
+      },
+      script: JSON.stringify(structuredData),
     },
   ],
 };
